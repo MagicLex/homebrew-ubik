@@ -5,9 +5,20 @@ SQL, exactly-once windows, no cluster.
 
 ```sh
 brew tap magiclex/ubik
-brew install ubik
+brew trust magiclex/ubik
+brew install magiclex/ubik/ubik
 ubik version
 ```
+
+Three commands, and the middle one is not optional: recent Homebrew refuses to load
+a formula from a tap you have not explicitly trusted. It is a deliberate speed bump
+on third-party code, so it is written out here rather than left for the error message
+to teach.
+
+The install name is fully qualified on purpose. `brew install ubik` also works today,
+since nothing named `ubik` exists in homebrew-core, but a bare name resolves core
+first and that is a race with whoever registers the name next. `magiclex/ubik/ubik`
+cannot resolve anywhere else.
 
 ## What it installs
 

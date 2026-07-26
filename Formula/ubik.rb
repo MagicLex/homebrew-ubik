@@ -9,7 +9,7 @@
 class Ubik < Formula
   desc "Streaming SQL engine: one binary, real SQL, exactly-once windows, no cluster"
   homepage "https://getubik.dev"
-  version "0.0.3"
+  version "0.0.4"
   # PolyForm Noncommercial 1.0.0: free for personal, non-commercial and evaluation
   # use, commercial use takes a paid licence. Not an SPDX-listed open source licence,
   # which is exactly why this lives in a tap and not in homebrew-core.
@@ -24,15 +24,15 @@ class Ubik < Formula
     depends_on macos: :monterey
 
     on_arm do
-      url "https://getubik.dev/releases/v0.0.3/ubik-0.0.3-darwin-arm64.tar.gz"
-      sha256 "bcbe68f6316ee6923afd1f6a717a8cae56148fff4bbbf5f3e77ffd77b1c71c95"
+      url "https://getubik.dev/releases/v0.0.4/ubik-0.0.4-darwin-arm64.tar.gz"
+      sha256 "d22b0e6fd53420a1269eecf6b02865c43a89babb114e8b259d071c9dc2e42998"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://getubik.dev/releases/v0.0.3/ubik-0.0.3-linux-amd64.tar.gz"
-      sha256 "7e50870ccadca4458359217dc48c73ee864d630c50f4d575184f4c749a153839"
+      url "https://getubik.dev/releases/v0.0.4/ubik-0.0.4-linux-amd64.tar.gz"
+      sha256 "10494e19d4b44be8c2a5d706b7086bb5cc429e91d4e31a2331393d03a8aa65fd"
     end
   end
 

@@ -9,7 +9,7 @@
 class Ubik < Formula
   desc "Streaming SQL engine: one binary, real SQL, exactly-once windows, no cluster"
   homepage "https://getubik.dev"
-  version "0.0.5"
+  version "1.0.0"
   # PolyForm Noncommercial 1.0.0: free for personal, non-commercial and evaluation
   # use, commercial use takes a paid licence. Not an SPDX-listed open source licence,
   # which is exactly why this lives in a tap and not in homebrew-core.
@@ -24,28 +24,27 @@ class Ubik < Formula
     depends_on macos: :monterey
 
     on_arm do
-      url "https://getubik.dev/releases/v0.0.5/ubik-0.0.5-darwin-arm64.tar.gz"
-      sha256 "08bdf5547bca84b9a7cd1fa0987c418d0644417655f2b581466fa41d426cb342"
+      url "https://getubik.dev/releases/v#{version}/ubik-#{version}-darwin-arm64.tar.gz"
+      sha256 "0fcee2d7a3a7743fbde04fde277748725ded39b0d38f43c30a6168ac3db816de"
     end
 
     on_intel do
-      # No Intel macOS build, and there will not be one: the last Intel Mac shipped in
-      # 2023 and its toolchain rots unattended. Fail with the reason instead of the
-      # opaque "no available formula" a missing url would give. pip does not rescue an
-      # Intel mac either, the wheel is macosx_11_0_arm64.
-      odie "Ubik has no Intel macOS build (Apple Silicon only). See https://getubik.dev"
+      # No Intel macOS build, deliberately: Apple discontinued Intel Macs in 2023 and
+      # the toolchain would rot unmaintained. A sentence beats brew's default "no
+      # available download" on a platform that is never coming.
+      odie "Ubik has no Intel macOS build. Use an Apple Silicon Mac, or the Linux build."
     end
   end
 
   on_linux do
     on_intel do
-      url "https://getubik.dev/releases/v0.0.5/ubik-0.0.5-linux-amd64.tar.gz"
-      sha256 "239fce1ef936943fa79cd6ee2121059c42292e8e362bf65c502e5ad480f71ed8"
+      url "https://getubik.dev/releases/v#{version}/ubik-#{version}-linux-amd64.tar.gz"
+      sha256 "73f3f4a2b4b1c591e17e7c641368f2c9943d869a3180a60a90fe2a47f605b528"
     end
 
     on_arm do
-      url "https://getubik.dev/releases/v0.0.5/ubik-0.0.5-linux-arm64.tar.gz"
-      sha256 "efba8984b3f5c4049f0f36a121b1a8f709a50d4771ca639f15a19c240d95ce07"
+      url "https://getubik.dev/releases/v#{version}/ubik-#{version}-linux-arm64.tar.gz"
+      sha256 "ce0c790cc2baad62efdd6400a8c2be13353ececcf6f97725eec042fbe59d83de"
     end
   end
 

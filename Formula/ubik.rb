@@ -16,9 +16,16 @@ class Ubik < Formula
   license :cannot_represent
 
   on_macos do
+    # macOS 12 is the real floor and it comes from the Go toolchain, not from us: the
+    # engine is built with MACOSX_DEPLOYMENT_TARGET=11.0, but Go stamps darwin/arm64
+    # binaries at 12.0 and will not go lower. Declared so brew refuses on an older mac
+    # with a clear message, instead of installing a CLI that starts and then cannot
+    # spawn its engine.
+    depends_on macos: :monterey
+
     on_arm do
       url "https://getubik.dev/releases/v0.0.3/ubik-0.0.3-darwin-arm64.tar.gz"
-      sha256 "9beb89f9b157b5f56847983e5a81c3cd74a50fccc5de3d06754456756cb76e40"
+      sha256 "bcbe68f6316ee6923afd1f6a717a8cae56148fff4bbbf5f3e77ffd77b1c71c95"
     end
   end
 

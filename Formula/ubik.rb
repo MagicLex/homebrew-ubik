@@ -9,7 +9,7 @@
 class Ubik < Formula
   desc "Streaming SQL engine: one binary, real SQL, exactly-once windows, no cluster"
   homepage "https://getubik.dev"
-  version "0.0.4"
+  version "0.0.5"
   # PolyForm Noncommercial 1.0.0: free for personal, non-commercial and evaluation
   # use, commercial use takes a paid licence. Not an SPDX-listed open source licence,
   # which is exactly why this lives in a tap and not in homebrew-core.
@@ -24,15 +24,28 @@ class Ubik < Formula
     depends_on macos: :monterey
 
     on_arm do
-      url "https://getubik.dev/releases/v0.0.4/ubik-0.0.4-darwin-arm64.tar.gz"
-      sha256 "d22b0e6fd53420a1269eecf6b02865c43a89babb114e8b259d071c9dc2e42998"
+      url "https://getubik.dev/releases/v0.0.5/ubik-0.0.5-darwin-arm64.tar.gz"
+      sha256 "08bdf5547bca84b9a7cd1fa0987c418d0644417655f2b581466fa41d426cb342"
+    end
+
+    on_intel do
+      # No Intel macOS build, and there will not be one: the last Intel Mac shipped in
+      # 2023 and its toolchain rots unattended. Fail with the reason instead of the
+      # opaque "no available formula" a missing url would give. pip does not rescue an
+      # Intel mac either, the wheel is macosx_11_0_arm64.
+      odie "Ubik has no Intel macOS build (Apple Silicon only). See https://getubik.dev"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://getubik.dev/releases/v0.0.4/ubik-0.0.4-linux-amd64.tar.gz"
-      sha256 "10494e19d4b44be8c2a5d706b7086bb5cc429e91d4e31a2331393d03a8aa65fd"
+      url "https://getubik.dev/releases/v0.0.5/ubik-0.0.5-linux-amd64.tar.gz"
+      sha256 "239fce1ef936943fa79cd6ee2121059c42292e8e362bf65c502e5ad480f71ed8"
+    end
+
+    on_arm do
+      url "https://getubik.dev/releases/v0.0.5/ubik-0.0.5-linux-arm64.tar.gz"
+      sha256 "efba8984b3f5c4049f0f36a121b1a8f709a50d4771ca639f15a19c240d95ce07"
     end
   end
 
